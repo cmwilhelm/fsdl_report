@@ -51,8 +51,8 @@ this is not a probability distribution [though most papers have <= 2 topics]).
 
 ![MAG Topic Frequencies](./writeup/mag_class_frequencies.png)
 
-Class frequencies are very uneven in this dataset; no attempt to alter
-this distribution was made.
+Class frequencies are very uneven in this dataset; no attempt to balance the classes
+was made.
 
 ### Network Architecture
 
