@@ -1,3 +1,6 @@
+# Full Stack Deep Learning Final Project
+Christopher Wilhelm
+
 # Background and Objectives
 Semantic Scholar (www.semanticscholar.org) is an academic literature
 search engine and knowledge graph, and my place of employment.
@@ -60,7 +63,7 @@ was chosen.
 These networks are a series of ReLU-activated fully-connected layers,
 terminating in a sigmoid-activated final dense layer with dimensionality equivalent
 to the number of classes (19). This output vector represents the independent probabilities
-of each class label. The basic implementation of this network can be seen in [TODO: insert link].
+of each class label. The basic implementation of this network can be seen in [multilabel.py](https://github.com/cmwilhelm/fsdl_report/blob/master/models/multilabel.py#L50-L77).
 
 ### Training Regime
 
@@ -70,7 +73,7 @@ labels.
 
 In order to evaluate performance for this task, an implementation of
 mean IOU was coded up based on set arithmetic of the predicted and
-actual classes (see: TODO INSERT LINK). A threshold for positive prediction
+actual classes (see [the implementation](https://github.com/cmwilhelm/fsdl_report/blob/master/models/multilabel.py#L15-L47)). A threshold for positive prediction
 was set to 0.5 in this metric.
 
 IOU was chosen due to the poor fit of the default binary crossentropy definition 
@@ -163,7 +166,7 @@ classification task, rather than a multi-label task, the final layers were modif
 Specifically, the sigmoid-activated final dense layer was replaced with a softmax-activated
 dense layer. Loss during training was switched to categorical crossentropy, and the
 performance metric was changed to simple classification accuracy. This is implemented
-in [TODO: link to multiclass_single_label.py].
+in [multiclass_single_label.py](https://github.com/cmwilhelm/fsdl_report/blob/master/models/multiclass_single_label.py)
 
 ### Results
 
