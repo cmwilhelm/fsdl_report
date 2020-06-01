@@ -46,7 +46,7 @@ can be seen in the figure below.
 (Please note that as multiple labels are possible,
 this is not a probability distribution [though most papers have <= 2 topics]).
 
-![MAG Topic Frequencies](./mag_class_frequencies.png)
+![MAG Topic Frequencies](./writeup/mag_class_frequencies.png)
 
 Class frequencies are very uneven in this dataset; no attempt to alter
 this distribution was made.
@@ -119,13 +119,13 @@ being split to train:eval:test sets of 400k:25k:25k.
 Class frequencies are even more dramatically uneven than MAG topics, as seen in the figure
 below:
 
-![ArXiv Category Frequencies](./arxiv_cat_frequencies.png)
+![ArXiv Category Frequencies](./writeup/arxiv_cat_frequencies.png)
 
 Although elided along the x-axis, there are a total of 176 classes, approximately
 10-fold MAG's topics. Multiple labels also occur on individual papers with much higher
 frequency in this dataset:
 
-![ArXiv Multilabel Frequencies](./arxiv_multilabel_frequencies.png)
+![ArXiv Multilabel Frequencies](./writeup/arxiv_multilabel_frequencies.png)
 
 ### Network Architecture
 Identical to the MAG topic classifier in the first section.

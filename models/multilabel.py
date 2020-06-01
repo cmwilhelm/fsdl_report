@@ -12,40 +12,6 @@ from .common import Dataset, Hyperparameters
 CLASS_THRESHOLD = 0.5
 
 
-def precision(actual, predicted_probs):
-    """
-    |predicted ⋂ actual| / |predicted|
-    """
-    predicted = tf.cast(tf.greater(predicted_probs, CLASS_THRESHOLD), tf.float32)
-    intersection = tf.math.multiply(actual, predicted)
-
-    intersection_sizes = tf.reduce_sum(intersection, axis=1)
-    prediction_sizes = tf.reduce_sum(predicted, axis=1)
-
-    precisions = tf.clip_by_value(
-        tf.math.divide(intersection_sizes, prediction_sizes + 1e-5),
-        0,
-        1
-    )
-
-    return tf.reduce_mean(precisions)
-
-
-def recall(actual, predicted_probs):
-    """
-    |predicted ⋂ actual| / |actual|
-    """
-    predicted = tf.cast(tf.greater(predicted_probs, CLASS_THRESHOLD), tf.float32)
-    intersection = tf.math.multiply(actual, predicted)
-
-    intersection_sizes = tf.reduce_sum(intersection, axis=1)
-    actual_sizes = tf.reduce_sum(actual, axis=1)
-
-    recalls = tf.math.divide(intersection_sizes, actual_sizes)
-
-    return tf.reduce_mean(recalls)
-
-
 def mean_iou(actual, predicted_probs):
     """
     Evaluation metric here is IOU.
@@ -123,7 +89,7 @@ def train(
     model.compile(
         optimizer=optimizers.Adam(hyperparameters.learning_rate),
         loss="binary_crossentropy",
-        metrics=[mean_iou, precision, recall]
+        metrics=[mean_iou]
     )
 
     print("Fitting!")
@@ -138,7 +104,7 @@ def train(
 
 
 def evaluate(model: Model, train_set: Dataset, eval_set: Dataset, test_set: Dataset):
-    model.compile(metrics=[mean_iou, precision, recall])
+    model.compile(metrics=[mean_iou])
 
     print("Train performance:")
     model.evaluate(train_set.inputs, train_set.labels)
